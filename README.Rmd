@@ -42,6 +42,7 @@ Make a plot of the predicted values
 ggplot(fit, aes(Jday, predict, group=ID, color=ID)) + geom_line() +
   geom_point(aes(Jday, Weight)) + xlab("Time") + ylab("Predicted weight")
 ```
+![Figure](https://github.com/eric-ward/ggrowth/blob/master/README-figs/unnamed-chunk-5-1.png)
 
 ### Adding new data
 
