@@ -1,0 +1,53 @@
+---
+title: "Fitting weight or length at age data with ggrowth"
+author: "Eric Ward"
+date: "December 01, 2016"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tvvarss}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-figs/",
+  cache.path = "README-cache/"
+)
+```
+
+# ggrowth
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(ggrowth)
+```
+
+Load the dataset that comes with the package (for illustration, this includes data for 2 individuals). 
+
+```{r}
+data("ggrowthData") # load data
+growthData$ID = as.factor(growthData$ID)
+```
+
+Fit the gompertz model to the dataset
+```{r}
+fit = fit_gompertz(growthData)
+```
+
+Make a plot of the predicted values  
+```{r, echo=FALSE, results='hide', warning=FALSE}
+ggplot(fit, aes(Jday, predict, group=ID, color=ID)) + geom_line() +
+  geom_point(aes(Jday, Weight)) + xlab("Time") + ylab("Predicted weight")
+```
+
+### Adding new data
+
+New data can be added in as a new data frame, or rbind() to the existing data frame. The format is 
+
+```{r}
+head(growthData)
+```
+

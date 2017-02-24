@@ -1,0 +1,14 @@
+Package: ggrowth
+Type: Package
+Title: Fits gompertz growth models to weight or length data for multiple individuals.
+Version: 0.1.0
+Author: Eric Ward
+Maintainer: Eric Ward <ericward2@gmail.com>
+Description: Takes in custom data frame, uses nls() to fit ML estimates of parameters, and returns data frame of predicted values (weights or lengths).
+License: GPL > 3.0
+Encoding: UTF-8
+LazyData: true
+Depends: dplyr, broom, ggplot2
+Imports:
+    date
+RoxygenNote: 6.0.1
